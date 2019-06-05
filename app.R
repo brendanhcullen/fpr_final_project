@@ -149,7 +149,7 @@ body <- dashboardBody(
                 
                             tags$li(tags$a(href="https://www.datacamp.com/community/tutorials/k-means-clustering-r", "Datacamp tutorial: Describes basics of clustering & provides a tutorial of k-means clustering, including interpretation of output in R.")),
                             tags$li(tags$a(href="https://stats.stackexchange.com/questions/183236/what-is-the-relation-between-k-means-clustering-and-pca", "A discussion of the relationship betweek K-means and PCA")),
-                            tags$li(tags$a(href="https://www.hackerearth.com/practice/machine-learning/machine-learning-algorithms/clustering-algorithms-evaluation-r/tutorial/", "An overview of K means and hierarchical clustering, along with a good description of distance metrics")),
+                            tags$li(tags$a(href="https://www.hackerearth.com/practice/machine-learning/machine-learning-algorithms/clustering-algorithms-evaluation-r/tutorial/", "Practical Guide to Clustering Algorithms & Evaluation in R")),
                             tags$li(tags$a(href="https://www.datascience.com/blog/k-means-clustering", "Introduction to K-means Clustering")),
                             tags$li(tags$a(href="https://stats.stackexchange.com/questions/133656/how-to-understand-the-drawbacks-of-k-means", "Drawbacks of K mean clustering")),
                             tags$li(tags$a(href="https://www.datascience.com/blog/k-means-alternatives", "Alternatives for segmenting noisy data"))),
