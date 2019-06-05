@@ -57,12 +57,13 @@ get_summary_data <- function(clust){
 
 # function to create sil table
 make_summary_table <- function(clust) {
-    get_summary_data(clust) %>% 
+    table <- get_summary_data(clust) %>% 
         datatable(rownames = FALSE, 
                   colnames = c("Cluster", "N", "Within SS", "Between SS", "Neg. Silhouette"),
                   caption = htmltools::tags$caption(
                       style = 'caption-side: bottom; text-align: left;',
-                      htmltools::em('N = number of observations per cluster; SS = sum of squares; \n Neg Silhouette = misclassified observations')))
+                      htmltools::em('N = number of observations per cluster; SS = sum of squares; Neg. Silhouette = misclassified observations')))
+    
     return(table)
 }
 
