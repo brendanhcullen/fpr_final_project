@@ -57,14 +57,12 @@ get_summary_data <- function(clust){
 
 # function to create sil table
 make_summary_table <- function(clust) {
-    table <- get_summary_data(clust) %>% 
+    get_summary_data(clust) %>% 
         datatable(rownames = FALSE, 
                   colnames = c("Cluster", "N", "Within SS", "Between SS", "Neg. Silhouette"),
                   caption = htmltools::tags$caption(
                       style = 'caption-side: bottom; text-align: left;',
                       htmltools::em('N = number of observations per cluster; SS = sum of squares')))
-    
-    return(table)
 }
 
 # Scatterplot function
@@ -88,7 +86,6 @@ scatplot <- function(data){
         theme_minimal(base_size = 17) + 
         theme(panel.grid.minor = element_blank())
 }
-
 
 
 # Dashboard header --------------------------------------------------------
@@ -123,7 +120,26 @@ body <- dashboardBody(
     tabItems(
         # Intro tab content
         tabItem(tabName = "intro",
-                    box("This dashboard is the final project for an R functional programming class. We use the Kaggle Pokemon dataset (available here [placeholder]) to demonstrate how different visualization of k-means clustering can provide help determine how well a clustering solution fits the data.", width = 12)),
+                    box("This dashboard is the final project for an R functional programming class.
+                        We use the Kaggle Pokemon dataset available", tags$a(href="https://www.kaggle.com/rounakbanik/pokemon", "here"),  
+                        "demonstrate how different visualization of k-means clustering can provide help determine how well 
+                        various clustering solutions fit the data.  
+
+                        Clustering algorithms are designed to group data based on their similarity or dissimilarity (e.g. distance in 
+                        euclidian space). K-means clustering is an unsupervised learning approach to grouping observations in a data set
+                        based on the compactness of the observations. It is best suited for data in which there is a priori reason to select
+                        a given number of clusters, though it can also be useful as a way to explore a data set visually.  
+
+
+                        Visualizations in this project include a cluster plot, silhouette plot, and scatterplot, 
+                        as well as a table that provides information about cluster size (number of observations), the number of observations
+                        that may be incorrectly included in a cluster (negative silhouette,  cluster density (within cluster sum of squares) 
+                        and cluster separation (between cluster sum of squares).  
+                        
+                        For additional information about unsupervised clustering algorithms, see the following resources:", 
+                        
+                        
+                        width = 12)),
         
         # clustplot tab content
         tabItem(tabName = "clustplot",
@@ -131,7 +147,13 @@ body <- dashboardBody(
                     box(plotOutput("clustplot"), width = 6),
                     box(DTOutput("summarytable1"), width = 6)),
                 fluidRow(
-                    box("This plot shows the cluster results on the first two principal components of the data that were used to create them.", width = 12))
+                    box("This plot shows the cluster results on the first two principal components of the data that were used to create them. 
+                        We typically want to see results in which observations group together closely within the cluster (a small within cluster sum of squares)
+                        and in which the different clusers do not overlap (a larger between clusters sum of squares).  
+
+                        The table displays information about cluster size (number of observations), the number of observations
+                        that may be incorrectly included in a cluster (negative silhouette,  cluster density (within cluster sum of squares) 
+                        and cluster separation (between cluster sum of squares).", width = 12))
                 ),
 
                 
