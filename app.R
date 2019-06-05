@@ -82,7 +82,7 @@ scatplot <- function(data){
         ggplot(aes(x = principal_component, y = value, color = factor(cluster))) +
         geom_point(position = position_jitter(width = 0.5), alpha = 0.6, size = 5) + 
         coord_flip() +
-        scale_color_OkabeIto() +
+        scale_color_OkabeIto(name = "Cluster") +
         labs(x = "Principal Component \n", y = "") + 
         facet_wrap(~pokemon_type, labeller = labeller(pokemon_type = facet_labels)) +
         theme_minimal(base_size = 17) + 
