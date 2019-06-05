@@ -62,7 +62,13 @@ make_summary_table <- function(clust) {
                   colnames = c("Cluster", "N", "Within SS", "Between SS", "Neg. Silhouette"),
                   caption = htmltools::tags$caption(
                       style = 'caption-side: bottom; text-align: left;',
+<<<<<<< HEAD
                       htmltools::em('N = number of observations per cluster; SS = sum of squares')))
+=======
+                      htmltools::em('N = number of observations per cluster; SS = sum of squares; \n Neg Silhouette = misclassified observations')))
+    
+    return(table)
+>>>>>>> 8620c592c236c8fc439591dc8567d16867994550
 }
 
 # Scatterplot function
@@ -80,7 +86,7 @@ scatplot <- function(data){
         ggplot(aes(x = principal_component, y = value, color = factor(cluster))) +
         geom_point(position = position_jitter(width = 0.5), alpha = 0.6, size = 5) + 
         coord_flip() +
-        scale_color_OkabeIto() +
+        scale_color_OkabeIto(name = "cluster") +
         labs(x = "Principal Component \n", y = "") + 
         facet_wrap(~pokemon_type, labeller = labeller(pokemon_type = facet_labels)) +
         theme_minimal(base_size = 17) + 
@@ -211,7 +217,7 @@ server <- function(input, output) {
                 geom_hline(yintercept = mean(data$sil_width, na.rm = TRUE), linetype = 2, size = .7) +
                 scale_fill_OkabeIto() +
                 scale_color_OkabeIto() +
-                theme_minimal() + 
+                theme_minimal(base_size = 17) + 
                 labs(title = paste0("Average Silhouette Width = ", round(mean(data$sil_width, na.rm = TRUE), 2)),
                      x = NULL,
                      y = "Silhouette width") 
@@ -222,7 +228,11 @@ server <- function(input, output) {
     output$clustplot <-
         renderPlot({
             data <- get(input$clusters)
-            data$clust_plot
+            clust_plot <- data$clust_plot
+            clust_plot + 
+                theme_minimal(base_size = 17) + 
+                theme(panel.grid.minor = element_blank()) + 
+                labs(title = "")
         })
     
     # Scatterplot
