@@ -62,13 +62,8 @@ make_summary_table <- function(clust) {
                   colnames = c("Cluster", "N", "Within SS", "Between SS", "Neg. Silhouette"),
                   caption = htmltools::tags$caption(
                       style = 'caption-side: bottom; text-align: left;',
-<<<<<<< HEAD
-                      htmltools::em('N = number of observations per cluster; SS = sum of squares')))
-=======
                       htmltools::em('N = number of observations per cluster; SS = sum of squares; \n Neg Silhouette = misclassified observations')))
-    
     return(table)
->>>>>>> 8620c592c236c8fc439591dc8567d16867994550
 }
 
 # Scatterplot function
