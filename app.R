@@ -62,13 +62,9 @@ make_summary_table <- function(clust) {
                   colnames = c("Cluster", "N", "Within SS", "Between SS", "Neg. Silhouette"),
                   caption = htmltools::tags$caption(
                       style = 'caption-side: bottom; text-align: left;',
-<<<<<<< HEAD
-                      htmltools::em('N = number of observations per cluster; SS = sum of squares')))
-=======
                       htmltools::em('N = number of observations per cluster; SS = sum of squares; \n Neg Silhouette = misclassified observations')))
     
     return(table)
->>>>>>> 8620c592c236c8fc439591dc8567d16867994550
 }
 
 # Scatterplot function
@@ -126,25 +122,37 @@ body <- dashboardBody(
     tabItems(
         # Intro tab content
         tabItem(tabName = "intro",
-                    box("This dashboard is the final project for an R functional programming class.
+                    box(tags$div(
+                        tags$p(tags$strong("Introduction to this project")),
+                        tags$p("This dashboard is the final project for an R functional programming class.
                         We use the Kaggle Pokemon dataset available", tags$a(href="https://www.kaggle.com/rounakbanik/pokemon", "here"),  
                         "demonstrate how different visualization of k-means clustering can provide help determine how well 
-                        various clustering solutions fit the data.  
-
-                        Clustering algorithms are designed to group data based on their similarity or dissimilarity (e.g. distance in 
+                        various clustering solutions fit the data."), 
+                        tags$p("Clustering algorithms are designed to group data based on their similarity or dissimilarity (e.g. distance in 
                         euclidian space). K-means clustering is an unsupervised learning approach to grouping observations in a data set
                         based on the compactness of the observations. It is best suited for data in which there is a priori reason to select
-                        a given number of clusters, though it can also be useful as a way to explore a data set visually.  
-
-
-                        Visualizations in this project include a cluster plot, silhouette plot, and scatterplot, 
+                        a given number of clusters, though it can also be useful as a way to explore a data set visually."), 
+                        tags$p("Visualizations in this project include a cluster plot, silhouette plot, and scatterplot, 
                         as well as a table that provides information about cluster size (number of observations), the number of observations
                         that may be incorrectly included in a cluster (negative silhouette,  cluster density (within cluster sum of squares) 
-                        and cluster separation (between cluster sum of squares).  
+                        and cluster separation (between cluster sum of squares)."),  
+                        tags$p(tags$strong("For additional information about unsupervised clustering algorithms, see the following resources:"))),
                         
-                        For additional information about unsupervised clustering algorithms, see the following resources:", 
-                        
-                        
+                        tags$ol(
+                            tags$li("- Cichosz, P. (2015). Data mining algorithms: explained using R. Chichester, West Sussex, UK.; Malden, MA, USA: John Wiley & Sons Inc."),  
+                            tags$li("- Ding, C., & He, X. (2004). K-means Clustering via Principal Component Analysis. In Twenty-first international conference on Machine learning  - ICML ’04 (p. 29). Banff, Alberta, Canada: ACM Press. https://doi.org/10.1145/1015330.1015408"),
+                            tags$li("- Karatzoglou, A., Smola, A., Hornik, K., & Zeileis, A. (2004). kernlab-an S4 package for kernel methods in R. Journal of statistical software, 11(9), 1-20."),
+                            tags$li("- Nerurkar, P., Shirke, A., Chandane, M., & Bhirud, S. (2018). Empirical Analysis of Data Clustering Algorithms. Procedia Computer Science, 125, 770–779. https://doi.org/10.1016/j.procs.2017.12.099"),
+                            tags$li("- Andrew Y. Ng, Michael I. Jordan, Yair Weiss On Spectral Clustering: Analysis and an Algorithm Neural Information Processing Symposium 2001 http://papers.nips.cc/paper/2092-on-spectral-clustering-analysis-and-an-algorithm.pdf"),
+                            tags$li("- von Luxburg, U. (2007). A Tutorial on Spectral Clustering. Statistics and Computing, 17(4), 395–416. https://doi.org/10.1007/s11222-007-9033-z"),
+                            tags$li("- Zha, H., Ding, C., Gu, M., He, X., & Simon, H. (2002). Spectral relaxation for K-means clustering. Advances in Neural Information Processing Systems 14 (NIPS’01), 1057–1064."), 
+                
+                            tags$li(tags$a(href="https://www.datacamp.com/community/tutorials/k-means-clustering-r", "Datacamp tutorial: Describes basics of clustering & provides a tutorial of k-means clustering, including interpretation of output in R.")),
+                            tags$li(tags$a(href="https://stats.stackexchange.com/questions/183236/what-is-the-relation-between-k-means-clustering-and-pca", "A discussion of the relationship betweek K-means and PCA")),
+                            tags$li(tags$a(href="https://www.hackerearth.com/practice/machine-learning/machine-learning-algorithms/clustering-algorithms-evaluation-r/tutorial/", "An overview of K means and hierarchical clustering, along with a good description of distance metrics")),
+                            tags$li(tags$a(href="https://www.datascience.com/blog/k-means-clustering", "Introduction to K-means Clustering")),
+                            tags$li(tags$a(href="https://stats.stackexchange.com/questions/133656/how-to-understand-the-drawbacks-of-k-means", "Drawbacks of K mean clustering")),
+                            tags$li(tags$a(href="https://www.datascience.com/blog/k-means-alternatives", "Alternatives for segmenting noisy data"))),
                         width = 12)),
         
         # clustplot tab content
