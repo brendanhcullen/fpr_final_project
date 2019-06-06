@@ -133,7 +133,7 @@ body <- dashboardBody(
                     box(tags$div(
                         tags$p(tags$strong("Introduction to this project")),
                         tags$p("This dashboard is the final project for an R functional programming class.
-                        We use the Kaggle Pokemon dataset available", tags$a(href="https://www.kaggle.com/rounakbanik/pokemon", "here"),  
+                        We use the ", tags$a(href="https://www.kaggle.com/rounakbanik/pokemon", "Kaggle Pokemon dataset"),  
                         "to demonstrate how different visualization of k-means clustering can help to determine how well 
                         various clustering solutions fit the data."), 
                         tags$p("Clustering algorithms are designed to group data based on their similarity or dissimilarity (e.g. distance in 
