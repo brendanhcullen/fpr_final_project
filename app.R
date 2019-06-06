@@ -7,6 +7,7 @@ library(tidyverse)
 library(janitor)
 library(DT)
 library(colorblindr)
+library(gginnards)
 
 
 # Read in pokemon data ---------------------------------------------------
