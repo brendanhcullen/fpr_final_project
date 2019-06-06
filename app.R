@@ -106,6 +106,7 @@ sidebar <- dashboardSidebar(
         menuItem("Cluster Plot", tabName = "clustplot", icon = icon("cookie")),
         menuItem("Silhuoette Plot", tabName = "silplot", icon = icon("chart-area")),
         menuItem("Scatter Plot", tabName = "scatplot", icon = icon("braille")),
+        
         selectInput(inputId = "clusters",
                     label = "Number of centroids:",
                     c("2" = "clust2", # turn this into a function!
@@ -113,7 +114,13 @@ sidebar <- dashboardSidebar(
                       "4" = "clust4", 
                       "5" = "clust5",
                       "6" = "clust6"),
-                    selected = "clust2")
+                    selected = "clust2"),
+        
+        img(src="dragon.png", width = "80%"),
+        tags$div(),
+        img(src="ghost.png", width = "80%"),
+        tags$div(),
+        img(src="fairy.png", width = "70%")
     ))
 
 
@@ -208,7 +215,6 @@ ui <- dashboardPage(header, sidebar, body)
 # Server ------------------------------------------------------------------
 
 server <- function(input, output) {
-    
     # Silhuoette plot
     output$silplot <-
         renderPlot({
