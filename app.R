@@ -231,11 +231,12 @@ server <- function(input, output) {
     output$clustplot <-
         renderPlot({
             data <- get(input$clusters)
-            clust_plot <- data$clust_plot
-            clust_plot + 
-                theme_minimal(base_size = 17) + 
-                theme(panel.grid.minor = element_blank()) + 
-                labs(title = "")
+            clust_plot <- data$clust_plot +
+                            theme_minimal(base_size = 17) +
+                            theme(panel.grid.minor = element_blank()) +
+                            labs(title = "")
+
+            gginnards::delete_layers(clust_plot, "GeomText") # remove text labels
         })
     
     # Scatterplot
